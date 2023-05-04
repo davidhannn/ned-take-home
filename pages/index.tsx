@@ -48,6 +48,7 @@ const FinanceContextProvider = ({ children }) => {
       value={{
         financeData,
         revenueAmount,
+        fundingAmount,
         handleRevenueInput,
         handleFundingAmount,
       }}

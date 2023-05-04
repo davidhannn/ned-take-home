@@ -1,10 +1,16 @@
 import TextInput from "./text-input";
 import { CONFIG } from "@/constants/enums";
+import CardWrapper from "./card-wrapper";
+import React from "react";
+import styles from "../styles/text.module.css";
 
 const Finance: React.FC = () => {
   return (
-    <div>
-      <p>What is your annual business revenue? *</p>
+    <CardWrapper>
+      <h1 className={styles.headerText}>Financing Options</h1>
+      <p className="text-3x1 font-bold underline">
+        What is your annual business revenue? *
+      </p>
       <TextInput config={CONFIG.REVENUE_AMOUNT} />
 
       <p>What is your desired loan amount?</p>
@@ -14,8 +20,8 @@ const Finance: React.FC = () => {
       <p>Revenue Shared Frequency</p>
       <p>Desired Repayment Delay</p>
       <p>What will you use the funds for?</p>
-    </div>
+    </CardWrapper>
   );
 };
 
-export default Finance;
+export default React.memo(Finance);

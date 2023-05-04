@@ -15,7 +15,7 @@ const TextInput = ({ config }: Props) => {
   return (
     <input
       className="text-input"
-      placeholder={configObject.placeholder}
+      placeholder={configObject?.placeholder}
       inputMode="numeric"
     />
   );

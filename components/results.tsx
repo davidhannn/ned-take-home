@@ -1,5 +1,11 @@
+import CardWrapper from "./card-wrapper";
+
 const Results: React.FC = () => {
-  return <h1>Results</h1>;
+  return (
+    <CardWrapper>
+      <h1>Results</h1>
+    </CardWrapper>
+  );
 };
 
 export default Results;

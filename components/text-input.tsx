@@ -6,7 +6,7 @@ type Props = {
 };
 
 const TextInput = ({ config }: Props) => {
-  const { financeData } = useContext(FinanceContext);
+  const { financeData, handleRevenueInput } = useContext(FinanceContext);
 
   const configObject = financeData[config];
 
@@ -17,6 +17,7 @@ const TextInput = ({ config }: Props) => {
       className="text-input"
       placeholder={configObject?.placeholder}
       inputMode="numeric"
+      onChange={handleRevenueInput}
     />
   );
 };

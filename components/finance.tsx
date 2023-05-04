@@ -2,6 +2,7 @@ import TextInput from "./text-input";
 import { CONFIG } from "@/constants/enums";
 import CardWrapper from "./card-wrapper";
 import React from "react";
+import Slider from "./range-slider";
 import styles from "../styles/text.module.css";
 
 const Finance: React.FC = () => {
@@ -14,7 +15,7 @@ const Finance: React.FC = () => {
       <TextInput config={CONFIG.REVENUE_AMOUNT} />
 
       <p>What is your desired loan amount?</p>
-
+      <Slider />
       <p>Revenue share percentage: </p>
 
       <p>Revenue Shared Frequency</p>

@@ -12,8 +12,13 @@ import variables from "../styles/variables.module.scss";
 
 const Slider: React.FC = () => {
   // const { state, actions } = useRangeSlider();
-  const { financeData, revenueAmount, fundingAmount, handleFundingAmount } =
-    useContext(FinanceContext);
+  const {
+    financeData,
+    revenueAmount,
+    fundingAmount,
+    handleFundingAmount,
+    setFundingAmount,
+  } = useContext(FinanceContext);
 
   let max = revenueAmount / 3;
   let defaultValue = [0, 0];
@@ -60,6 +65,9 @@ const Slider: React.FC = () => {
           borderRadius: "10px",
           boxShadow: "0px 3px 20px 6px rgba(0, 0, 0, 0.02)",
           width: "20%",
+        }}
+        onChange={(e) => {
+          setFundingAmount(e.target.value);
         }}
       ></input>
     </div>

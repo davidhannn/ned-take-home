@@ -13,6 +13,7 @@ export const FinanceContext = createContext({
   financeData: {},
   revenueAmount: 0,
   fundingAmount: 0,
+  setFundingAmount: () => {},
   handleRevenueInput: () => {},
   handleFundingAmount: () => {},
 });
@@ -21,6 +22,7 @@ const FinanceContextProvider = ({ children }) => {
   const [financeData, setFinanceData] = useState({});
   const [revenueAmount, setRevenueAmount] = useState(0);
   const [fundingAmount, setFundingAmount] = useState(0);
+  const [fundReasons, setFundReasons] = useState([]);
 
   useEffect(() => {
     axios.get(API_LINK).then(({ data }) => {
@@ -43,12 +45,15 @@ const FinanceContextProvider = ({ children }) => {
     setFundingAmount(value[1]);
   };
 
+  console.log(fundingAmount, "funding amount");
+
   return (
     <FinanceContext.Provider
       value={{
         financeData,
         revenueAmount,
         fundingAmount,
+        setFundingAmount,
         handleRevenueInput,
         handleFundingAmount,
       }}

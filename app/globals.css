@@ -17,6 +17,7 @@
 }
 
 body {
+  font-family: "Source Sans Pro", sans-serif;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,4 +25,11 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.text-input {
+  width: 700px;
+  height: 64px;
+  background-color: rgba(196, 196, 196, 0.15);
+  border-radius: 10px;
 }

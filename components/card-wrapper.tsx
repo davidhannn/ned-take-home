@@ -18,9 +18,11 @@ const CardWrapper: React.FC<PropsWithChildren & Props> = ({
         boxShadow: "0px 3px 20px 6px rgba(0, 0, 0, 0.02)",
         paddingLeft: "3.5rem",
         paddingRight: "3.5rem",
+        paddingBottom: "3.5rem",
         // maxWidth: "fit-content",
+        maxHeight: "fit-content",
         marginRight: CARDTYPES.FINANCE && "11px",
-        width: cardType === CARDTYPES.FINANCE ? "80%" : "30%",
+        width: cardType === CARDTYPES.FINANCE ? "60%" : "40%",
       }}
     >
       {children}

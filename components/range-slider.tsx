@@ -27,10 +27,8 @@ const Slider: React.FC = () => {
     financeData[CONFIG.FUNDING_AMOUNT_MAX]?.value
   );
 
-  let max = revenueAmount / 3;
+  let max = (revenueAmount / 3).toFixed(2);
 
-  console.log(max, "max");
-  console.log(fundingAmountMax, "funding maount max");
   return (
     <div className="flex flex-row w-full">
       <div className="flex flex-col w-full mr-6 ">
@@ -66,7 +64,7 @@ const Slider: React.FC = () => {
           backgroundColor: "rgba(196, 196, 196, 0.15)",
           borderRadius: "10px",
           boxShadow: "0px 3px 20px 6px rgba(0, 0, 0, 0.02)",
-          width: "20%",
+          width: "25%",
           padding: "4px 8px",
           color: variables.sliderBlue,
           fontWeight: 700,

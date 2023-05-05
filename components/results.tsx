@@ -7,7 +7,7 @@ import {
   getExpectedCompletionDate,
   getExpectedTransfers,
 } from "@/utils";
-import { CONFIG, REVENUE_SHARED_FREQUENCY } from "@/constants/enums";
+import { CARDTYPES, CONFIG, REVENUE_SHARED_FREQUENCY } from "@/constants/enums";
 
 const Results: React.FC = () => {
   const {
@@ -32,19 +32,18 @@ const Results: React.FC = () => {
   const sharedFrequency =
     revenueSharedFrequency === REVENUE_SHARED_FREQUENCY.MONTHLY ? 12 : 52;
 
-  const expectedTransfers =
-    getExpectedTransfers(
-      totalRevenueShare,
-      sharedFrequency,
-      revenueAmount,
-      feePercentage
-    ) ?? "";
+  const expectedTransfers = getExpectedTransfers(
+    totalRevenueShare,
+    sharedFrequency,
+    revenueAmount,
+    feePercentage
+  ).toFixed(0);
 
   const expectedCompletionDate =
     getExpectedCompletionDate(expectedTransfers, desiredRepaymentDelay) ?? "";
 
   return (
-    <CardWrapper>
+    <CardWrapper cardType={CARDTYPES.RESULTS}>
       <h1 className="header-text">Results</h1>
 
       <div className="flex flex-row justify-between mb-8 mt-12">

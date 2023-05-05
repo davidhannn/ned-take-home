@@ -55,3 +55,13 @@ body {
   line-height: "40.92px";
   padding-top: 28px;
 }
+
+.fund-row-text-input {
+  background-color: rgba(196, 196, 196, 0.15);
+  outline: "none";
+  border-radius: 10px 10px 0px 0px;
+  outline: "none";
+  padding: 4px 12px;
+  width: "50%";
+  /* margin-right: "10px"; */
+}

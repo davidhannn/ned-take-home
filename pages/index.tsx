@@ -132,7 +132,7 @@ export default function Main() {
             }}
           >
             <Finance />
-            <Results cardType={CARDTYPES.RESULTS} />
+            <Results />
           </div>
         </main>
       </FinanceContextProvider>

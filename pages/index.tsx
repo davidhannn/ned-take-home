@@ -17,10 +17,12 @@ export const FinanceContext = createContext({
   fundReasons: [],
   revenueSharedFrequency: REVENUE_SHARED_FREQUENCY.MONTHLY,
   desiredRepaymentDelay: 30,
-  // setFundingAmount: () => {},
-  // setRevenueAmount: () => {},
-  handleRevenueInput: () => {},
-  handleFundingAmount: () => {},
+  setFundingAmount: () => null,
+  setRevenueAmount: () => null,
+  setRevenueSharedFrequency: () => null,
+  setDesiredRepaymentDelay: () => null,
+  handleRevenueInput: () => null,
+  handleFundingAmount: () => null,
 });
 
 const FinanceContextProvider = ({ children }) => {

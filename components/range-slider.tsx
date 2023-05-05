@@ -59,6 +59,10 @@ const Slider: React.FC = () => {
           borderRadius: "10px",
           boxShadow: "0px 3px 20px 6px rgba(0, 0, 0, 0.02)",
           width: "20%",
+          padding: "4px 8px",
+          color: variables.sliderBlue,
+          fontWeight: 700,
+          fontSize: "18px",
         }}
         onChange={(e) => {
           setFundingAmount(e.target.value);

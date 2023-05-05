@@ -11,7 +11,7 @@ const RadioButton: React.FC = () => {
       defaultValue={REVENUE_SHARED_FREQUENCY.MONTHLY}
       onChange={setRevenueSharedFrequency}
     >
-      <Stack spacing={5} direction="row">
+      <Stack spacing={5} direction="row" ml={8}>
         <Radio colorScheme="blue" value={REVENUE_SHARED_FREQUENCY.MONTHLY}>
           Monthly
         </Radio>

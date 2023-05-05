@@ -97,15 +97,9 @@ export default function Main() {
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
-              // alignItems: "center",
-              // backgroundColor: variables.backgroundColor,
               margin: "0 auto",
               width: "80%",
-              // height: "80vh",
-              // width: "100%",
-              // paddingLeft: "180px",
-              // paddingRight: "180px",
-              paddingTop: "146px",
+              paddingTop: "80px",
             }}
           >
             <Finance />

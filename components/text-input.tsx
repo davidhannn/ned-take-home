@@ -8,6 +8,7 @@ import {
   NumberInputStepper,
   NumberDecrementStepper,
 } from "@chakra-ui/react";
+import variables from "../styles/variables.module.scss";
 
 type Props = {
   config?: string;
@@ -25,6 +26,10 @@ const TextInput = ({ config }: Props) => {
       placeholder={configObject?.placeholder}
       onChange={(valueString) => setRevenueAmount(parse(valueString))}
       value={format(revenueAmount)}
+      bgColor={"rgba(196, 196, 196, 0.15)"}
+      outline={"none"}
+      borderRadius={8}
+      mt={2}
       // max={50}
     >
       <NumberInputField />

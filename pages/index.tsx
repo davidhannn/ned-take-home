@@ -83,6 +83,15 @@ const FinanceContextProvider = ({ children }) => {
     setFundingAmount(value[1]);
   };
 
+  const saveFundReasons = (fundReason) => {
+    setFundReasons([...fundReasons, fundReason]);
+  };
+
+  const removeFundReason = (reasonId) => {
+    const filteredFundReasons = fundReasons.filter(({ id }) => id !== reasonId);
+    setFundReasons(filteredFundReasons);
+  };
+
   return (
     <FinanceContext.Provider
       value={{
@@ -97,9 +106,12 @@ const FinanceContextProvider = ({ children }) => {
         setRevenueSharedFrequency,
         setDesiredRepaymentDelay,
         setRevenueAmount,
+        setFundReasons,
         setTotalRevenueShare,
+        removeFundReason,
         handleRevenueInput,
         handleFundingAmount,
+        saveFundReasons,
       }}
     >
       {children}

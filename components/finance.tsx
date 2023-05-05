@@ -8,12 +8,15 @@ import { FinanceContext } from "@/pages";
 import { getRevenueSharePercentage } from "@/utils";
 import variables from "../styles/variables.module.scss";
 
+import TrashSvg from "@/public/Trash.svg";
 import FundsRow from "./funds-row";
 import RadioButton from "./radio-button";
 import RepaymentDropdown from "./repayment-dropdown";
+import Image from "next/image";
 
 const Finance: React.FC = () => {
-  const { revenueAmount, fundingAmount } = useContext(FinanceContext);
+  const { revenueAmount, fundingAmount, fundReasons, removeFundReason } =
+    useContext(FinanceContext);
 
   const revenueSharePercentage = getRevenueSharePercentage(
     revenueAmount,
@@ -63,6 +66,22 @@ const Finance: React.FC = () => {
         <p>What will you use the funds for?</p>
         <FundsRow />
       </div>
+
+      {fundReasons?.map(({ id, amount, description, option }) => (
+        <div className="flex flex-row w-full mt-4">
+          <p style={{ width: "30%", paddingLeft: "8px" }}>{option}</p>
+          <p style={{ width: "50%", marginLeft: "20px" }}>{description}</p>
+          <p style={{ width: "25%" }}>$ {amount}</p>
+          <div
+            className="flex justify-center"
+            onClick={() => {
+              removeFundReason(id);
+            }}
+          >
+            <Image priority src={TrashSvg} alt="add-button" />
+          </div>
+        </div>
+      ))}
     </CardWrapper>
   );
 };

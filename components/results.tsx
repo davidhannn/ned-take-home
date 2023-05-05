@@ -32,17 +32,16 @@ const Results: React.FC = () => {
   const sharedFrequency =
     revenueSharedFrequency === REVENUE_SHARED_FREQUENCY.MONTHLY ? 12 : 52;
 
-  const expectedTransfers = getExpectedTransfers(
-    totalRevenueShare,
-    sharedFrequency,
-    revenueAmount,
-    feePercentage
-  );
+  const expectedTransfers =
+    getExpectedTransfers(
+      totalRevenueShare,
+      sharedFrequency,
+      revenueAmount,
+      feePercentage
+    ) ?? "";
 
-  const expectedCompletionDate = getExpectedCompletionDate(
-    expectedTransfers,
-    desiredRepaymentDelay
-  );
+  const expectedCompletionDate =
+    getExpectedCompletionDate(expectedTransfers, desiredRepaymentDelay) ?? "";
 
   return (
     <CardWrapper>

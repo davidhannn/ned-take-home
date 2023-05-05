@@ -44,7 +44,6 @@ const Slider: React.FC = () => {
           min={0}
           max={max}
           step={1000}
-          // defaultValue={[0, 30]}
         >
           <RangeSliderTrack bg="#C4C4C4">
             <RangeSliderFilledTrack bg={variables.sliderBlue} />

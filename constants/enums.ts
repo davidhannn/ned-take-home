@@ -16,3 +16,8 @@ export enum CARDTYPES {
   "FINANCE" = "finance",
   "RESULTS" = "results",
 }
+
+export enum REVENUE_SHARED_FREQUENCY {
+  "MONTHLY" = "monthly",
+  "WEEKLY" = "weekly",
+}

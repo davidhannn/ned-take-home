@@ -8,13 +8,13 @@ import "@/app/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import variables from "../styles/variables.module.scss";
 import { createContext, useContext, useEffect, useState } from "react";
-import { CARDTYPES } from "@/constants/enums";
+import { CARDTYPES, REVENUE_SHARED_FREQUENCY } from "@/constants/enums";
 
 export const FinanceContext = createContext({
   financeData: {},
   revenueAmount: 0,
   fundingAmount: 0,
-  setFundingAmount: () => {},
+  // setFundingAmount: () => {},
   handleRevenueInput: () => {},
   handleFundingAmount: () => {},
 });
@@ -24,6 +24,9 @@ const FinanceContextProvider = ({ children }) => {
   const [revenueAmount, setRevenueAmount] = useState(0);
   const [fundingAmount, setFundingAmount] = useState(0);
   const [fundReasons, setFundReasons] = useState([]);
+  const [revenueSharedFrequency, setRevenueSharedFrequency] = useState(
+    REVENUE_SHARED_FREQUENCY.MONTHLY
+  );
 
   useEffect(() => {
     axios.get(API_LINK).then(({ data }) => {
@@ -46,7 +49,7 @@ const FinanceContextProvider = ({ children }) => {
     setFundingAmount(value[1]);
   };
 
-  console.log(fundingAmount, "funding amount");
+  console.log(revenueSharedFrequency, "funding amount");
 
   return (
     <FinanceContext.Provider
@@ -54,7 +57,9 @@ const FinanceContextProvider = ({ children }) => {
         financeData,
         revenueAmount,
         fundingAmount,
+        revenueSharedFrequency,
         setFundingAmount,
+        setRevenueSharedFrequency,
         handleRevenueInput,
         handleFundingAmount,
       }}

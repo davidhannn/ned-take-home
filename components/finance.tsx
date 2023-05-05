@@ -7,9 +7,10 @@ import styles from "../styles/text.module.css";
 import { FinanceContext } from "@/pages";
 import { getRevenueSharePercentage } from "@/utils";
 import variables from "../styles/variables.module.scss";
-import Dropdown from "./dropdown";
+
 import FundsRow from "./funds-row";
 import RadioButton from "./radio-button";
+import RepaymentDropdown from "./repayment-dropdown";
 
 const Finance: React.FC = () => {
   const { revenueAmount, fundingAmount } = useContext(FinanceContext);
@@ -49,7 +50,7 @@ const Finance: React.FC = () => {
 
       <div className="flex flex-row mb-8">
         <p>Desired Repayment Delay</p>
-        <Dropdown />
+        <RepaymentDropdown />
       </div>
 
       <div className="flex flex-col">

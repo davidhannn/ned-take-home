@@ -14,6 +14,8 @@ export const FinanceContext = createContext({
   financeData: {},
   revenueAmount: 0,
   fundingAmount: 0,
+  fundReasons: [],
+  revenueSharedFrequency: REVENUE_SHARED_FREQUENCY.MONTHLY,
   // setFundingAmount: () => {},
   handleRevenueInput: () => {},
   handleFundingAmount: () => {},
@@ -27,6 +29,8 @@ const FinanceContextProvider = ({ children }) => {
   const [revenueSharedFrequency, setRevenueSharedFrequency] = useState(
     REVENUE_SHARED_FREQUENCY.MONTHLY
   );
+
+  const [desiredRepaymentDelay, setDesiredRepaymentDelay] = useState(30);
 
   useEffect(() => {
     axios.get(API_LINK).then(({ data }) => {
@@ -45,11 +49,8 @@ const FinanceContextProvider = ({ children }) => {
   };
 
   const handleFundingAmount = (value) => {
-    console.log(value[1]);
     setFundingAmount(value[1]);
   };
-
-  console.log(revenueSharedFrequency, "funding amount");
 
   return (
     <FinanceContext.Provider
@@ -60,6 +61,7 @@ const FinanceContextProvider = ({ children }) => {
         revenueSharedFrequency,
         setFundingAmount,
         setRevenueSharedFrequency,
+        setDesiredRepaymentDelay,
         handleRevenueInput,
         handleFundingAmount,
       }}

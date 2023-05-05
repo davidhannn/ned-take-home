@@ -10,8 +10,6 @@ const TextInput = ({ config }: Props) => {
 
   const configObject = financeData[config];
 
-  console.log(configObject);
-
   return (
     <input
       className="text-input"

@@ -7,3 +7,7 @@ export const getRevenueSharePercentage = (revenueAmount, loanAmount) => {
 export const getDesiredFeePercentage = (feePercentage, loanAmount) => {
   return feePercentage * loanAmount;
 };
+
+export const parseDesiredRepaymentDelay = (value) => {
+  return parseInt(value.split(" ")[0]);
+};

@@ -2,19 +2,47 @@ import CardWrapper from "./card-wrapper";
 import styles from "../styles/text.module.css";
 import { useContext } from "react";
 import { FinanceContext } from "@/pages";
-import { getDesiredFeePercentage } from "@/utils";
-import { CONFIG } from "@/constants/enums";
+import {
+  getDesiredFeePercentage,
+  getExpectedCompletionDate,
+  getExpectedTransfers,
+} from "@/utils";
+import { CONFIG, REVENUE_SHARED_FREQUENCY } from "@/constants/enums";
 
 const Results: React.FC = () => {
-  const { revenueAmount, fundingAmount, financeData } =
-    useContext(FinanceContext);
+  const {
+    revenueAmount,
+    fundingAmount,
+    financeData,
+    revenueSharedFrequency,
+    desiredRepaymentDelay,
+  } = useContext(FinanceContext);
 
   const feePercentage = parseFloat(
     financeData[CONFIG.DESIRED_FEE_PERCENTAGE]?.value
   );
 
-  // console.log(financeData[CONFIG.DESIRED_FEE_PERCENTAGE]?.value);
-  // console.log(feePercentage, "fee percentage");
+  const desiredFeePercentage = getDesiredFeePercentage(
+    feePercentage,
+    fundingAmount
+  );
+  const totalRevenueShare =
+    fundingAmount + getDesiredFeePercentage(feePercentage, fundingAmount);
+
+  const sharedFrequency =
+    revenueSharedFrequency === REVENUE_SHARED_FREQUENCY.MONTHLY ? 12 : 52;
+
+  const expectedTransfers = getExpectedTransfers(
+    totalRevenueShare,
+    sharedFrequency,
+    revenueAmount,
+    feePercentage
+  );
+
+  const expectedCompletionDate = getExpectedCompletionDate(
+    expectedTransfers,
+    desiredRepaymentDelay
+  );
 
   return (
     <CardWrapper>
@@ -34,28 +62,27 @@ const Results: React.FC = () => {
         <p className="result-text">Fees</p>
         <p>
           {" "}
-          {`(${feePercentage * 100}%)`} $
-          {getDesiredFeePercentage(feePercentage, fundingAmount)}
+          {`(${feePercentage * 100}%)`} ${desiredFeePercentage}
         </p>
       </div>
 
       <div className="flex flex-row justify-between mb-8">
         <p className="result-text">Total Revenue Share</p>
         <p>
-          ${" "}
-          {fundingAmount +
-            getDesiredFeePercentage(feePercentage, fundingAmount)}
+          $ {totalRevenueShare}
+          {/* {fundingAmount +
+            getDesiredFeePercentage(feePercentage, fundingAmount)} */}
         </p>
       </div>
 
       <div className="flex flex-row justify-between mb-8">
         <p className="result-text">Expected Transfers</p>
-        <p>$ {fundingAmount}</p>
+        <p>{expectedTransfers}</p>
       </div>
 
       <div className="flex flex-row justify-between mb-8">
         <p className="result-text">Expected Completion Date</p>
-        <p>$ {fundingAmount}</p>
+        <p>{expectedCompletionDate}</p>
       </div>
     </CardWrapper>
   );

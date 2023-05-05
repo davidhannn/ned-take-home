@@ -11,7 +11,6 @@ import { useContext } from "react";
 import variables from "../styles/variables.module.scss";
 
 const Slider: React.FC = () => {
-  // const { state, actions } = useRangeSlider();
   const {
     financeData,
     revenueAmount,
@@ -20,29 +19,25 @@ const Slider: React.FC = () => {
     setFundingAmount,
   } = useContext(FinanceContext);
 
-  let max = revenueAmount / 3;
-  let defaultValue = [0, 0];
-  let min = 0;
+  const fundingAmountMin = parseInt(
+    financeData[CONFIG.FUNDING_AMOUNT_MIN]?.value
+  );
 
-  // const {
-  //   state,
-  //   actions,
-  //   getInnerTrackProps,
-  //   getInputProps,
-  //   getMarkerProps,
-  //   getRootProps,
-  //   getThumbProps,
-  //   getTrackProps,
-  // } = useRangeSlider({ min, max, defaultValue });
+  const fundingAmountMax = parseInt(
+    financeData[CONFIG.FUNDING_AMOUNT_MAX]?.value
+  );
+
+  let max = revenueAmount / 3;
 
   return (
     <div className="flex flex-row w-full">
       <div className="flex flex-col w-full mr-6 ">
         <div className="flex flex-row justify-between mb-4">
-          <p>{min}</p>
-          <p>{max}</p>
+          <p>{fundingAmountMin}</p>
+          <p>{fundingAmountMax <= max ? fundingAmountMax : max}</p>
         </div>
         <RangeSlider
+          // defaultValue={[fundingAmountMin, max]}
           defaultValue={[0, max]}
           aria-label={["min", "max"]}
           onChange={handleFundingAmount}

@@ -16,6 +16,7 @@ export const FinanceContext = createContext({
   fundingAmount: 0,
   fundReasons: [],
   revenueSharedFrequency: REVENUE_SHARED_FREQUENCY.MONTHLY,
+  desiredRepaymentDelay: 30,
   // setFundingAmount: () => {},
   handleRevenueInput: () => {},
   handleFundingAmount: () => {},
@@ -29,6 +30,7 @@ const FinanceContextProvider = ({ children }) => {
   const [revenueSharedFrequency, setRevenueSharedFrequency] = useState(
     REVENUE_SHARED_FREQUENCY.MONTHLY
   );
+  const [totalRevenueShare, setTotalRevenueShare] = useState(0);
 
   const [desiredRepaymentDelay, setDesiredRepaymentDelay] = useState(30);
 
@@ -59,9 +61,12 @@ const FinanceContextProvider = ({ children }) => {
         revenueAmount,
         fundingAmount,
         revenueSharedFrequency,
+        desiredRepaymentDelay,
+        totalRevenueShare,
         setFundingAmount,
         setRevenueSharedFrequency,
         setDesiredRepaymentDelay,
+        setTotalRevenueShare,
         handleRevenueInput,
         handleFundingAmount,
       }}

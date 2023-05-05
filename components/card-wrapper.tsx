@@ -20,7 +20,7 @@ const CardWrapper: React.FC<PropsWithChildren & Props> = ({
         paddingRight: "3.5rem",
         // maxWidth: "fit-content",
         marginRight: CARDTYPES.FINANCE && "11px",
-        width: cardType === CARDTYPES.FINANCE ? "70%" : "30%",
+        width: cardType === CARDTYPES.FINANCE ? "80%" : "30%",
       }}
     >
       {children}

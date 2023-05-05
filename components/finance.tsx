@@ -15,6 +15,11 @@ import RepaymentDropdown from "./repayment-dropdown";
 const Finance: React.FC = () => {
   const { revenueAmount, fundingAmount } = useContext(FinanceContext);
 
+  const revenueSharePercentage = getRevenueSharePercentage(
+    revenueAmount,
+    fundingAmount
+  );
+
   return (
     <CardWrapper>
       <h1 className="header-text">Financing Options</h1>
@@ -39,7 +44,8 @@ const Finance: React.FC = () => {
             fontSize: "18px",
           }}
         >
-          {getRevenueSharePercentage(revenueAmount, fundingAmount)} %
+          {isNaN(parseInt(revenueSharePercentage)) ? 0 : revenueSharePercentage}{" "}
+          %
         </p>
       </div>
 

@@ -76,12 +76,16 @@ const Results: React.FC = () => {
 
       <div className="flex flex-row justify-between mb-8">
         <p className="result-text">Expected Transfers</p>
-        <p>{expectedTransfers}</p>
+        <p>{isNaN(expectedTransfers) ? 0 : expectedTransfers}</p>
       </div>
 
       <div className="flex flex-row justify-between mb-8">
         <p className="result-text">Expected Completion Date</p>
-        <p>{expectedCompletionDate}</p>
+        <p>
+          {expectedCompletionDate === "Invalid Date"
+            ? ""
+            : expectedCompletionDate}
+        </p>
       </div>
     </CardWrapper>
   );

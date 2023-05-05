@@ -29,16 +29,24 @@ const Slider: React.FC = () => {
 
   let max = revenueAmount / 3;
 
+  console.log(max, "max");
+  console.log(fundingAmountMax, "funding maount max");
   return (
     <div className="flex flex-row w-full">
       <div className="flex flex-col w-full mr-6 ">
         <div className="flex flex-row justify-between mb-4">
           <p>{fundingAmountMin}</p>
-          <p>{fundingAmountMax <= max ? fundingAmountMax : max}</p>
+          <p>
+            {revenueAmount === 0
+              ? fundingAmountMax
+              : fundingAmountMax <= max
+              ? fundingAmountMax
+              : max}
+          </p>
         </div>
         <RangeSlider
-          // defaultValue={[fundingAmountMin, max]}
-          defaultValue={[0, max]}
+          defaultValue={[25000, max]}
+          // defaultValue={[0, max]}
           aria-label={["min", "max"]}
           onChange={handleFundingAmount}
           min={0}

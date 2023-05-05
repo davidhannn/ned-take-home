@@ -7,22 +7,48 @@ import Header from "@/components/header";
 import "@/app/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import variables from "../styles/variables.module.scss";
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  SetStateAction,
+  Dispatch,
+} from "react";
 import { CARDTYPES, REVENUE_SHARED_FREQUENCY } from "@/constants/enums";
 
-export const FinanceContext = createContext({
+interface IFinanceContext {
+  financeData: {};
+  revenueAmount: number;
+  fundingAmount: number;
+  fundReasons: null | [];
+  revenueSharedFrequency: REVENUE_SHARED_FREQUENCY;
+  desiredRepaymentDelay: number;
+  totalRevenueShare: number;
+  setFundingAmount: Dispatch<SetStateAction<number>>;
+  setRevenueAmount: Dispatch<SetStateAction<number>>;
+  setRevenueSharedFrequency: Dispatch<SetStateAction<string>>;
+  setDesiredRepaymentDelay: Dispatch<SetStateAction<number>>;
+  setTotalRevenueShare: Dispatch<SetStateAction<number>>;
+  handleRevenueInput: Dispatch<SetStateAction<number>>;
+  handleFundingAmount: Dispatch<SetStateAction<number>>;
+}
+
+export const FinanceContext = createContext<IFinanceContext>({
   financeData: {},
   revenueAmount: 0,
   fundingAmount: 0,
-  fundReasons: [],
+  fundReasons: null,
   revenueSharedFrequency: REVENUE_SHARED_FREQUENCY.MONTHLY,
   desiredRepaymentDelay: 30,
-  setFundingAmount: () => null,
-  setRevenueAmount: () => null,
-  setRevenueSharedFrequency: () => null,
-  setDesiredRepaymentDelay: () => null,
-  handleRevenueInput: () => null,
-  handleFundingAmount: () => null,
+  totalRevenueShare: 0,
+  setFundingAmount: () => {},
+  setRevenueAmount: () => {},
+  setRevenueSharedFrequency: () => {},
+  setDesiredRepaymentDelay: () => {},
+  setTotalRevenueShare: () => {},
+  handleRevenueInput: () => {},
+  handleFundingAmount: () => {},
 });
 
 const FinanceContextProvider = ({ children }) => {
@@ -66,6 +92,7 @@ const FinanceContextProvider = ({ children }) => {
         revenueSharedFrequency,
         desiredRepaymentDelay,
         totalRevenueShare,
+        fundReasons,
         setFundingAmount,
         setRevenueSharedFrequency,
         setDesiredRepaymentDelay,

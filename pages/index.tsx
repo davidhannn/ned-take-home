@@ -8,6 +8,7 @@ import "@/app/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import variables from "../styles/variables.module.scss";
 import { createContext, useContext, useEffect, useState } from "react";
+import { CARDTYPES } from "@/constants/enums";
 
 export const FinanceContext = createContext({
   financeData: {},
@@ -67,43 +68,35 @@ const API_LINK =
   "https://raw.githubusercontent.com/Ned-Helps/demo-repository/main/config.json";
 
 export default function Main() {
-  // const [data, setData] = useState({});
-
-  // useEffect(() => {
-  //   axios.get(API_LINK).then(({ data }) => {
-  //     const financeData = {};
-  //     data.forEach(
-  //       ({ name, value, label, placeholder, tooltips }) =>
-  //         (financeData[name] = { value, label, placeholder, tooltips })
-  //     );
-
-  //     setData(financeData);
-  //   });
-
-  //   // console.log(data, "here");
-  // }, []);
-
-  // console.log(data, "yoo");
-
   return (
     <ChakraProvider>
       <FinanceContextProvider>
         <Header />
         <main
           style={{
-            display: "flex",
-            flexDirection: "row",
             backgroundColor: variables.backgroundColor,
-            height: "80vh",
-            paddingLeft: "180px",
-            paddingRight: "180px",
-            paddingTop: "146px",
+            height: "100vh",
           }}
         >
-          {/* <main className="flex min-h-screen flex-row items-center justify-between p-24  "> */}
-          <Finance />
-          <Results />
-          {/* </main> */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              // alignItems: "center",
+              // backgroundColor: variables.backgroundColor,
+              margin: "0 auto",
+              width: "80%",
+              // height: "80vh",
+              // width: "100%",
+              // paddingLeft: "180px",
+              // paddingRight: "180px",
+              paddingTop: "146px",
+            }}
+          >
+            <Finance />
+            <Results cardType={CARDTYPES.RESULTS} />
+          </div>
         </main>
       </FinanceContextProvider>
     </ChakraProvider>

@@ -8,7 +8,6 @@ const FundsRow: React.FC = () => {
 
   const fundOptions = financeData[CONFIG.USE_OF_FUNDS]?.value.split("*");
 
-  console.log(fundOptions, "fund options");
   return (
     <div className="flex flex-row w-full">
       <Select>

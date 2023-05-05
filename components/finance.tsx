@@ -16,7 +16,7 @@ const Finance: React.FC = () => {
 
   return (
     <CardWrapper>
-      <h1 className={styles.headerText}>Financing Options</h1>
+      <h1 className="header-text">Financing Options</h1>
 
       <div className="flex flex-col mb-8 mt-10">
         <p>What is your annual business revenue? *</p>

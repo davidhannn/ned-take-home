@@ -3,3 +3,7 @@ export const getRevenueSharePercentage = (revenueAmount, loanAmount) => {
     2
   );
 };
+
+export const getDesiredFeePercentage = (feePercentage, loanAmount) => {
+  return feePercentage * loanAmount;
+};

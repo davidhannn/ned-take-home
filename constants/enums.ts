@@ -11,3 +11,8 @@ export enum CONFIG {
   "REVENUE_PERCENTAGE_MIN" = "revenue_percentage_min",
   "REVENUE_PERCENTAGE_MAX" = "revenue_percentage_max",
 }
+
+export enum CARDTYPES {
+  "FINANCE" = "finance",
+  "RESULTS" = "results",
+}

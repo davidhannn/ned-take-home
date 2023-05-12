@@ -44,10 +44,9 @@ const Slider: React.FC = () => {
         </div>
         <RangeSlider
           defaultValue={[25000, max]}
-          // defaultValue={[0, max]}
           aria-label={["min", "max"]}
           onChange={handleFundingAmount}
-          min={0}
+          min={fundingAmountMin}
           max={max}
           step={1000}
         >

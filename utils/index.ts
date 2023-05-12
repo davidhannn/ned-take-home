@@ -29,7 +29,8 @@ export const getExpectedCompletionDate = (
   repaymentDelay
 ) => {
   const now = new Date();
+
   return new Date(
-    new Date(now).setDate(now.getDate() + expectedTransfers + repaymentDelay)
+    new Date(now).setDate(now.getDate() + expectedTransfers * repaymentDelay)
   ).toLocaleDateString();
 };
